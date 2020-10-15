@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Calculation.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Calculation.Web.Api.Controllers.CalculationController.Get">
+            <summary>
+            Provides examples
+            </summary>
+            <remarks>Used to retrieve a list of example expressions.</remarks>
+            <response code="200">The request was handled successfully, response data is contained in the response body</response>
+        </member>
+        <member name="M:Calculation.Web.Api.Controllers.CalculationController.PostCalculation(System.String)">
+             <summary>
+             Evaluates a string expression consisting of non-negative integers and the + - / * operators.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /Calculation
+                 {
+                    "expression": "4+5/2"
+                 }
+            
+             </remarks>
+             <param name="expression"></param>
+             <returns>Calculation based on the provided expression</returns>
+             <response code="200">The request was handled successfully.</response>
+             <response code="400">If the expression is invalid</response> 
+        </member>
+    </members>
+</doc>
