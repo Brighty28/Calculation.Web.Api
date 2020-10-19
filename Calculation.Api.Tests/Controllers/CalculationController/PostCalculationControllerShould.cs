@@ -61,6 +61,13 @@ namespace Calculation.Api.Tests.Controllers.CalculationController
             var result = _calculationController.PostCalculation(value);
             result.Should().BeOfType(typeof(BadRequestResult));
         }
- 
+
+        [Fact]
+        public void ReturnBadRequest_DivideByZero()
+        {
+            var result = _calculationController.PostCalculation("3/0");
+            result.Should().BeOfType(typeof(BadRequestResult));
+        }
+
     }
 }
