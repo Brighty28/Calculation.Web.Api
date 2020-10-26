@@ -9,7 +9,7 @@ namespace Calculation.Api.Tests
         {
             private readonly List<object[]> _data = new List<object[]>
             {
-                new object[] { "4+5*2", 14 },
+                new object[] { "4+5*2", 14.0 },
                 new object[] { "4+5/2", 6.5 },
                 new object[] { "4+5/2-1", 5.5 },
                 new object[] { "5+5/2", 7.5 },

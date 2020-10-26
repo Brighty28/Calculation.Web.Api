@@ -17,15 +17,6 @@ namespace Calculation.Api.Tests.Controllers.CalculationController
         }
 
         [Theory]
-        [ClassData(typeof(TestData.CalculationTestData))]
-        public void ReturnDoubleResult_OnValidExpression(string value, double expectedResult)
-        {
-            var result = _calculationController.Calculate(value);
-            result.Should().Be(expectedResult);
-            result.Should().BeOfType(typeof(double));
-        }
-
-        [Theory]
         [InlineData("4+5*2")]
         [InlineData("4+5/2")]
         [InlineData("4+5/2-1")]
@@ -35,21 +26,6 @@ namespace Calculation.Api.Tests.Controllers.CalculationController
         {
             var result = _calculationController.PostCalculation(value);
             result.Should().BeOfType(typeof(OkObjectResult));
-        }
-
-        [Theory]
-        [InlineData("4+5*2", true)]
-        [InlineData("4+5/2", true)]
-        [InlineData("4+5/2-1", true)]
-        [InlineData("5+5/2", true)]
-        [InlineData("99+100/2", true)]
-        [InlineData("1000.ghgh+2", false)]
-        [InlineData("0.jhjhj", false)]
-        [InlineData("fhgfhfhfh", false)]
-        public void ReturnIsValidRegex_BasedOnExpression(string value, bool expectedResult)
-        {
-            var result = _calculationController.IsValid(value);
-            result.Should().Be(expectedResult);
         }
 
         [Theory]

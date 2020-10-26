@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -53,13 +50,13 @@ namespace Calculation.Web.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult PostCalculation([FromBody, Required] string expression)
         {
-            if (!IsValid(expression))
+            if (!MathEvaluator.IsExpression(expression))
             {
                 _logger.LogError("{MethodName}, expression {Expression} is invalid ", nameof(PostCalculation), expression);
                 return BadRequest();
             }
 
-            var result = Calculate(expression);
+            var result = MathEvaluator.Parse(expression);
 
             if (double.IsInfinity(result))
             {
@@ -69,30 +66,6 @@ namespace Calculation.Web.Api.Controllers
 
             return Ok(result);
         }
-
-        [NonAction]
-        public double Calculate(string expression)
-        {
-            double result = 0.0;
-
-            var results = Regex.Split(expression.Trim(), @"\D+[+\-*/.]");
-
-            if (results.Length != 0)
-            {
-                foreach (var reg in results)
-                {
-                    result = Convert.ToDouble(new DataTable().Compute(reg, null));
-                }
-            }
-
-            return result;
-        }
-
-        [NonAction]
-        public bool IsValid(string expression)
-        {
-            return Regex.IsMatch(expression.Trim(), @"(?:[0-9]+[*+/-])+[0-9]+");
-        }
-
+   
     }
 }

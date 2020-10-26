@@ -29,5 +29,88 @@
              <response code="200">The request was handled successfully.</response>
              <response code="400">If the expression is invalid</response> 
         </member>
+        <member name="M:Calculation.Web.Api.MathEvaluator.IsExpression(System.String)">
+            <summary>
+            Determines if an expression contains only valid characters
+            </summary>
+            <param name="s">The expression to check</param>
+            <returns>Indicates whether only valid characters were used in the expression</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.MathEvaluator.TokenizeExpression(System.String,System.Collections.Generic.Dictionary{System.Char,System.Int32})">
+            <summary>
+            Splits an expression into elements
+            </summary>
+            <param name="expression">Mathematical expression</param>
+            <param name="operators">Operators used as delimiters</param>
+            <returns>The list of elements</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.MathEvaluator.CalculateValue(System.String)">
+            <summary>
+            Calculates the value of an expression
+            </summary>
+            <param name="expression">The expression to evaluate</param>
+            <returns>The value of the expression</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.MathEvaluator.EvaluateOperation(System.String,System.String,System.String)">
+            <summary>
+            Performs an operation on the operands
+            </summary>
+            <param name="oper">Operator</param>
+            <param name="operand1">Left operand</param>
+            <param name="operand2">Right operand</param>
+            <returns>Value of the operation</returns>
+        </member>
+        <member name="T:Calculation.Web.Api.ShuntingYard">
+            <summary>
+            Base class for a Shunting Yard algormittm
+            </summary>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.Parse(System.String)">
+            <summary>
+            Returns the evaluated value of the expression
+            </summary>
+            <remarks>Throws ArgumentExpression</remarks>
+            <param name="expression">A mathematical expression</param>
+            <returns>Value of the expression</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.TryParse(System.String,System.Decimal@)">
+            <summary>
+            Tries to evaluate a mathematical expression.
+            </summary>
+            <param name="expression">The expression to evaluate</param>
+            <param name="value">The parsed value</param>
+            <returns>Indicates whether the evaluation was succesful</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.IsExpression(System.String)">
+            <summary>
+            Determines if an expression contains only valid characters
+            </summary>
+            <param name="s">The expression to check</param>
+            <returns>Indicates whether only valid characters were used in the expression</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.TokenizeExpression(System.String,System.Collections.Generic.Dictionary{System.Char,System.Int32})">
+            <summary>
+            Splits an expression into elements
+            </summary>
+            <param name="expression">Mathematical expression</param>
+            <param name="operators">Operators used as delimiters</param>
+            <returns>The list of elements</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.CalculateValue(System.String)">
+            <summary>
+            Calculates the value of an expression
+            </summary>
+            <param name="expression">The expression to evaluate</param>
+            <returns>The value of the expression</returns>
+        </member>
+        <member name="M:Calculation.Web.Api.ShuntingYard.EvaluateOperation(System.String,System.String,System.String)">
+            <summary>
+            Performs an operation on the operands
+            </summary>
+            <param name="oper">Operator</param>
+            <param name="operand1">Left operand</param>
+            <param name="operand2">Right operand</param>
+            <returns>Value of the operation</returns>
+        </member>
     </members>
 </doc>
